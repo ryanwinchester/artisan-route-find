@@ -28,17 +28,23 @@ class RouteFindCommand extends Command
      *
      * @return int
      */
-    public function handle()
-    {
-        $process = new Process("php artisan route:list");
-        $process->run();
+     public function handle()
+     {
+         $process = new Process("php artisan route:list");
+         $process->run();
 
-        $output = explode("\n", $process->getOutput());
+         $results = $this->searchResults(
+             explode("\n", $process->getOutput())
+         );
 
-        print $this->searchResults($output);
+         if (! empty($results)) {
+           print $results;
+         } else {
+           $this->info("No results.");
+         }
 
-        return ! empty($output) ? 0 : 1;
-    }
+         return $process->getExitCode();
+     }
 
     /**
      * Format the output into a string.
@@ -68,7 +74,8 @@ class RouteFindCommand extends Command
             }
 
             // TODO: Add search term highlighting
-            // e.g.
+            // e.g. pseudo-ish code:
+            //
             // return str_replace(
             //     $this->argument('search'),
             //     "highlight".$search."/highlight",
