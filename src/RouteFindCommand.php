@@ -52,7 +52,7 @@ class RouteFindCommand extends Command
             return str_contains($line, $this->argument('search'));
         })->map(function ($line) {
             return $this->formatLine($line);
-        })->implode("\n");
+        })->implode(PHP_EOL);
     }
 
     /**
@@ -68,6 +68,12 @@ class RouteFindCommand extends Command
             }
 
             // TODO: Add search term highlighting
+            // e.g.
+            // return str_replace(
+            //     $this->argument('search'),
+            //     "highlight".$search."/highlight",
+            //     $line
+            // );
 
             return $line;
     }
