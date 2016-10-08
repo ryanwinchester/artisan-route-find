@@ -38,4 +38,4 @@ and to trim extra whitespace from the results:
 php artisan route:find api/files --trim
 ```
 
-![](http://s.ryanwinchester.ca/1l3J2t3O2V15/Screen%20Shot%202016-10-07%20at%209.04.18%20PM.png)
+![](http://s.ryanwinchester.ca/1B0R2k0r0641/Screen%20Shot%202016-10-08%20at%209.38.50%20AM.png)
